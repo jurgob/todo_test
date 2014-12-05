@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" data-framework="emberjs">
+  <head>
+    
+  </head>
+  <body>
+
+    <div ng-controller="MainCtrl">
+      <h1>My Todo list:</h1>
+
+      <div>
+        <form>
+            <input ng-model="newItemText" type="text"  >
+            <button ng-click="addItem(newItemText)" >Add</button>
+        </form>
+      <div>
+
+      <ul>
+        <li ng-repeat="item in todoList">{{item.text}}   <span ng-click="deleteItem($index)" >X</span>  </li>
+      </ul>
+    </div>
+
+
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-v1.3.0.js"></script>
+    <script src="http://builds.emberjs.com/tags/v1.8.1/ember.js"></script>
+    <script src="http://builds.emberjs.com/tags/v1.0.0-beta.11/ember-data.js"></script>
+    <script src="controller.js"></script>
+  </body>
+</html>
