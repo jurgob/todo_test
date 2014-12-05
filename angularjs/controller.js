@@ -8,10 +8,11 @@ angular.module('mega_todo').controller('MainCtrl', function ($scope) {
   ];
 
   var addItem = function(text){
-  	$scope.todoList.push({ 
-  		text: text,
-  		done: false
-  	});
+    if(text)
+      $scope.todoList.push({ 
+    		text: text,
+    		done: false
+    	});
   }
   
   $scope.deleteItem = function(idx){
