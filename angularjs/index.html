@@ -5,20 +5,27 @@
     <script src="controller.js"></script>
   </head>
   <body>
+    <div class="mainCont"  ng-controller="MainCtrl">
+      <h1 >My Todo list:</h1>
 
-<div ng-controller="MainCtrl">
-  <h1>My Todo list:</h1>
+      <div class="addArea" >
+        <form>
+            <input  class="addItemText" ng-model="newItemText" type="text"  >
+            <button  class="addItemBtn" ng-click="addItem()" >Add</button>
+        </form>
+      <div>
 
-  <div>
-    <form>
-        <input ng-model="newItemText" type="text"  >
-        <button ng-click="addItem(newItemText)" >Add</button>
-    </form>
-  <div>
+      <ul class="todoList" >
 
-  <ul>
-    <li ng-repeat="item in todoList">{{item.text}}   <span ng-click="deleteItem($index)" >X</span>  </li>
-  </ul>
-</div>
+        <li  class="item" ng-repeat="item in todoList">
+          <input class="itemCheck" type="checkbox" class="toggle">
+          <span class="itemLabel" >
+          {{item.text}}   
+          </span>
+          <button  class="itemDelete" ng-click="deleteItem($index)" >X</button>  
+        </li>
+      </ul>
+
+    </div>
   </body>
 </html>
