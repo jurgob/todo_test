@@ -1,6 +1,7 @@
 
 window.mega_todo = Ember.Application.create();
 
+
 angular.module('mega_todo').controller('MainCtrl', function ($scope) {
   $scope.todoList = [
     { text:'Dynamic Todo 1', done: true},
