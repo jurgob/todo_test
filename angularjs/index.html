@@ -1,7 +1,8 @@
 <!doctype html>
 <html ng-app="mega_todo">
   <head>
-    <title>Angular TODO list</title>
+    <title>angularjs TODO list</title>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
     <script src="controller.js"></script>
   </head>
@@ -11,7 +12,7 @@
 
       <div class="addArea" >
         <form>
-            <input  class="addItemText" ng-model="newItemText" type="text"  >
+            <input name="addItemText" class="addItemText" ng-model="newItemText" type="text"  >
             <button  class="addItemBtn" ng-click="addItem()" >Add</button>
         </form>
       <div>
