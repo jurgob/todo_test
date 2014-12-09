@@ -17,7 +17,7 @@
       {{#each todo in model itemController="todo"  }}
         <li>
           <input class="itemCheck" type="checkbox" class="toggle">
-          <span class="itemLabel" >{{todo.text}}</label>
+          <span class="itemLabel" >{{todo.text}}</span>
           <button class="itemDelete" {{action "removeTodo"}} >X</button>
         </li>
       {{/each}}
