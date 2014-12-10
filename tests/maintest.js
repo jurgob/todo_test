@@ -62,9 +62,6 @@ casper.test.begin('Page Load', 3, function suite(test) {
         var ev = this.evaluate(_addItemFunc, {itemText:itemText})
         test.assertEvalEquals(function() {
             var testItems$ =$('li');
-            __utils__.echo(testItems$.length)
-            __utils__.echo(testItems$.last().find('.itemLabel').text().trim())
-
             return testItems$.last().find('.itemLabel').text().trim()
         }, itemText,  "a lot of items add success"); 
     });
