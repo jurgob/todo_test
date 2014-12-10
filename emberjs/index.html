@@ -8,10 +8,20 @@
 
       {{input
         type="text"
+        name="addItemText"
+        class="addItemText"
         id="new-todo"
         placeholder="What needs to be done?"
         value=newItemText
         action="createTodo"}}
+
+      
+
+      <button
+        name="addItemBtn"
+        class="addItemBtn"
+        id="new-todo-btn"
+        {{action "createTodo"}} >Add</button>
 
       <ul class="todoList" >
       {{#each todo in model itemController="todo"  }}
