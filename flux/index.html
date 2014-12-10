@@ -61,9 +61,10 @@
           return (
             <div>
               <h3>TODO</h3>
+
               <form onSubmit={this.handleSubmit}>
-                <input onChange={this.onChange} value={this.state.text} />
-                <button>{'Add'}</button>
+                <input name="addItemText" className="addItemText" onChange={this.onChange} value={this.state.text} />
+                <button name="addItemBtn" className="addItemBtn"  >{'Add'}</button>
               </form>
               <TodoList items={this.state.items}   />
             </div>
