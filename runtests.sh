@@ -1,1 +1,1 @@
-casperjs test tests/maintest.js | grep -v "Unsafe JavaScript"
+casperjs test tests/maintest.js  --fw="$1"  | grep -v "Unsafe JavaScript"
