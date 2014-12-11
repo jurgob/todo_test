@@ -67,24 +67,24 @@ casper.test.begin('Page Load', 3, function suite(test) {
         // }
         // casper.repeat(parseInt(itemText), _addItemFunc);
 
-        var _addItemFunc = function(itemText){
-            var toAdd = itemText;
-            for(var idx = 0; idx<=toAdd; idx++ ){
-                $('.addItemText').blur()
-                $('.addItemText').val(idx) 
-                $('.addItemText').change()
-                $('.addItemBtn').click()
-            }
-        }
+        // var _addItemFunc = function(itemText){
+        //     var toAdd = itemText;
+        //     for(var idx = 0; idx<=toAdd; idx++ ){
+        //         $('.addItemText').blur()
+        //         $('.addItemText').val(idx) 
+        //         $('.addItemText').change()
+        //         $('.addItemBtn').click()
+        //     }
+        // }
 
-        var ev = this.evaluate(_addItemFunc, {itemText:itemText})
-        test.assertEvalEquals(
-            function() {
-                var testItems$ =$('li');        
-                return testItems$.last().find('.itemLabel').text().trim()
-            }, 
-            itemText,  "a lot of items add success");
-        });
+        // var ev = this.evaluate(_addItemFunc, {itemText:itemText})
+        // test.assertEvalEquals(
+        //     function() {
+        //         var testItems$ =$('li');        
+        //         return testItems$.last().find('.itemLabel').text().trim()
+        //     }, 
+        //     itemText,  "a lot of items add success");
+        // });
 
 
     casper.run(function() {
