@@ -5,10 +5,29 @@ var framework_name = casper.cli.get('fw')
 var PAGE_URL = "http://localhost:8000/"+framework_name
 var PAGE_TITLE = framework_name+" TODO list"
 
+var _PERF = function(){
+    this.LAST_PERF = new Date().getTime();
+    this.measure = function(){
+        var _time = new Date().getTime();
+        var _perf = _time - this.LAST_PERF;
+        this.LAST_PERF = _time;
+        return _perf
+    }
+
+}
+
+
+
+
+
+
+
 casper.test.begin('Page Load', 3, function suite(test) {
+    var PERF = new _PERF();
+    casper.echo("PERF start" + PERF.measure());
     casper.start(PAGE_URL, function() {
         casper.echo("testing framework: "+framework_name)
-
+        casper.echo("PERF page loaded:" + PERF.measure());
         test.assertTitle(PAGE_TITLE, "page title is correct");
 
 
@@ -21,11 +40,6 @@ casper.test.begin('Page Load', 3, function suite(test) {
             });
         }, function then() {
             var itemText = "0";
-
-
-            
-
-
 
             // var _addItemFunc = function(itemText){
             //     __utils__.echo("$('.addItemText').length: "+$('body').html())
@@ -42,6 +56,7 @@ casper.test.begin('Page Load', 3, function suite(test) {
                 var testItems$ =$('li');
                 return testItems$.last().find('.itemLabel').text().trim()
             }, itemText,  "item add success");
+            casper.echo("PERF item add success:" + PERF.measure());
         }, function timeout(){
             this.echo("problem during page render")
         },
@@ -49,23 +64,24 @@ casper.test.begin('Page Load', 3, function suite(test) {
     );
 
     casper.then(function() {
-        var itemText = "100";
+        var itemText = "60";
         var index = 0;
-        // var _addItemFunc = function(){
+        var _addItemFunc = function(){
+            casper.thenClick(".addItemBtn", function() {
+                index++;
+                if(index == itemText){
+                    test.assertEvalEquals(function() {
+                        var testItems$ =$('li');
+                        return testItems$.last().find('.itemLabel').text().trim()
+                    }, itemText,  "a lot of items add success");  
+                    casper.echo("PERF a lot of items add success:" + PERF.measure());
 
-        //     casper.echo('_addItemFunc'+index)
-        //     casper.sendKeys('.addItemText', itemText);
-        //     casper.click('.addItemBtn');
-        //     index++;
-        //     if(index == itemText){
-        //         test.assertEvalEquals(function() {
-        //             var testItems$ =$('li');
-                    
-        //             return testItems$.last().find('.itemLabel').text().trim()
-        //         }, itemText,  "a lot of items add success");  
-        //     }
-        // }
-        // casper.repeat(parseInt(itemText), _addItemFunc);
+                }
+            });
+        }
+        casper.sendKeys('.addItemText', itemText);
+        casper.repeat(parseInt(itemText), _addItemFunc);
+        
 
         // var _addItemFunc = function(itemText){
         //     var toAdd = itemText;
@@ -84,7 +100,7 @@ casper.test.begin('Page Load', 3, function suite(test) {
         //         return testItems$.last().find('.itemLabel').text().trim()
         //     }, 
         //     itemText,  "a lot of items add success");
-        // });
+        });
 
 
     casper.run(function() {
