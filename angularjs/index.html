@@ -15,7 +15,7 @@
             <button  class="addItemBtn" ng-click="addItem()" >Add</button>
         </form>
       <div>
-      <div>items completed: {{getCompletedItems().length}}</div>
+      <div class="itemsCompletedCounter" >items completed: {{getCompletedItems().length}}</div>
       <ul class="todoList" >
         <li  class="item" ng-repeat="item in todoList">
           <input class="itemCheck" type="checkbox" class="toggle"  ng-model="item.done" ng-click="modifyItem($index, {'done': item.done })" >

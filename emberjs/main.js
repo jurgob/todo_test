@@ -56,7 +56,11 @@ mega_todo.TodosController = Ember.ArrayController.extend({
       // Save the new model
       todo.save();
     }
-  }
+  },
+    getCompletedItems: function(){
+        return this.filterBy('done', true).get('length')
+    }.property('@each.done')
+
 });
 
 
@@ -74,14 +78,14 @@ mega_todo.TodoController = Ember.ObjectController.extend({
 
     if (value === undefined) {
       // property being used as a getter
-      return model.get('isCompleted');
+      return model.get('done');
     } else {
       // property being used as a setter
-      model.set('isCompleted', value);
+      model.set('done', value);
       model.save();
-      return value;
+      return !value;
     }
-  }.property('model.isCompleted')
+  }.property('model.done')
 });
 
 

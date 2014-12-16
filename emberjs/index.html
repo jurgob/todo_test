@@ -15,18 +15,19 @@
         value=newItemText
         action="createTodo"}}
 
-      
-
       <button
         name="addItemBtn"
         class="addItemBtn"
         id="new-todo-btn"
         {{action "createTodo"}} >Add</button>
 
+
+        <div class="itemsCompletedCounter" >items completed: {{getCompletedItems}}</div>
+
       <ul class="todoList" >
       {{#each todo in model itemController="todo"  }}
         <li>
-          <input class="itemCheck" type="checkbox" class="toggle">
+          {{input class="itemCheck"  checked=todo.isCompleted  type="checkbox"  }}
           <span class="itemLabel" >{{todo.text}}</span>
           <button class="itemDelete" {{action "removeTodo"}} >X</button>
         </li>
