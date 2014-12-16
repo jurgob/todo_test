@@ -9,18 +9,16 @@
   <body>
     <div class="mainCont"  ng-controller="MainCtrl">
       <h1 >My Todo list - Angularjs:</h1>
-
       <div class="addArea" >
         <form>
             <input name="addItemText" class="addItemText" ng-model="newItemText" type="text"  >
             <button  class="addItemBtn" ng-click="addItem()" >Add</button>
         </form>
       <div>
-
+      <div>items completed: {{getCompletedItems().length}}</div>
       <ul class="todoList" >
-
         <li  class="item" ng-repeat="item in todoList">
-          <input class="itemCheck" type="checkbox" class="toggle">
+          <input class="itemCheck" type="checkbox" class="toggle"  ng-model="item.done" ng-click="modifyItem({'done': item.done })" >
           <span class="itemLabel" >
           {{item.text}}   
           </span>
