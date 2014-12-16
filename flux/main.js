@@ -8,25 +8,58 @@ var DeleteItemBtn = React.createClass({
     }
 });
 
+var CheckItem = React.createClass({
+    getInitialState: function() {
+        return {item: this.props.item, itemIdx: this.props.order };
+    },
+    modifyItem: function (e) {
+        // Passing order of task
+        console.log('this.props.order: '+this.props.order)
+        console.log('this.props.item.done: '+this.props.item.done)
+
+        this.props.clicked(this.props.order, !this.props.item.done);
+    },
+    render: function () {
+        return (<input className="itemCheck" type="checkbox" checked={this.props.item.done}  onChange={this.modifyItem}  />);
+    }
+});
+
+
 var TodoList = React.createClass({
+    getInitialState: function() {
+        return {items: this.props.items };
+    },
     handleDeleteItem: function(idx){
         //console.log('handleDeleteItem: '+idx);
-        this.props.items.splice(idx, 1)
+
+        this.state.items.splice(idx, 1)
+        this.setState(this.state);
+        return;
+    },
+    handleModifyItem: function(idx, isDone){
+        //console.log('handleDeleteItem: '+idx);
+        this.state.items[idx]['done'] = isDone
         this.setState(this.state);
         return;
     },
     render: function() {
-        var handleDeleteItem = this.handleDeleteItem
+        var handleDeleteItem = this.handleDeleteItem;
+        var handleModifyItem = this.handleModifyItem;
         var createItem = function(item, idx) {
             return (
                 <li>
-                    <input className="itemCheck" type="checkbox" />
+                    <CheckItem clicked={handleModifyItem} order={idx} item={item}  />
                     <span className="itemLabel" >{item.text}</span>
                     <DeleteItemBtn clicked={handleDeleteItem}  order={idx} item={item}  />
                 </li>
             );
         };
-        return <ul>{this.props.items.map(createItem)}</ul>;
+        return (
+            <div>
+                <div class="itemsCompletedCounter" >items completed: {this.state.items.filter(function(el){ return el.done }).length}</div>
+                <ul>{this.props.items.map(createItem)}</ul>
+            </div>
+        );
     }
 });
 
@@ -50,11 +83,11 @@ var TodoApp = React.createClass({
         return (
             <div>
                 <h3>TODO</h3>
-
                 <form onSubmit={this.handleSubmit}>
                     <input name="addItemText" className="addItemText" onChange={this.onChange} value={this.state.text} />
                     <button name="addItemBtn" className="addItemBtn"  >{'Add'}</button>
                 </form>
+
                 <TodoList items={this.state.items}   />
             </div>
         );
@@ -62,3 +95,8 @@ var TodoApp = React.createClass({
 });
 
 React.render(<TodoApp />, $('#TodoApp')[0]);
+
+
+
+
+
