@@ -14,9 +14,6 @@ var CheckItem = React.createClass({
     },
     modifyItem: function (e) {
         // Passing order of task
-        console.log('this.props.order: '+this.props.order)
-        console.log('this.props.item.done: '+this.props.item.done)
-
         this.props.clicked(this.props.order, !this.props.item.done);
     },
     render: function () {
@@ -24,21 +21,17 @@ var CheckItem = React.createClass({
     }
 });
 
-
 var TodoList = React.createClass({
-    getInitialState: function() {
-        return {items: this.props.items };
-    },
     handleDeleteItem: function(idx){
         //console.log('handleDeleteItem: '+idx);
 
-        this.state.items.splice(idx, 1)
+        this.props.items.splice(idx, 1)
         this.setState(this.state);
         return;
     },
     handleModifyItem: function(idx, isDone){
         //console.log('handleDeleteItem: '+idx);
-        this.state.items[idx]['done'] = isDone
+        this.props.items[idx]['done'] = isDone
         this.setState(this.state);
         return;
     },
@@ -56,7 +49,8 @@ var TodoList = React.createClass({
         };
         return (
             <div>
-                <div class="itemsCompletedCounter" >items completed: {this.state.items.filter(function(el){ return el.done }).length}</div>
+                <div class="itemsCompletedCounter" >items completed: {this.props.items.filter(function(el){ return el.done }).length}</div>
+                <div class="itemsCompletedCounter" >items: {this.props.items.length}</div>
                 <ul>{this.props.items.map(createItem)}</ul>
             </div>
         );
