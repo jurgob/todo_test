@@ -1,5 +1,28 @@
-angular.module('mega_todo', []);
-angular.module('mega_todo').controller('MainCtrl', function ($scope) {
+var mega_todo = angular.module('mega_todo', [
+    'ngRoute',
+    'mega_todo_ctrls'
+]);
+
+
+mega_todo.config(['$routeProvider',
+    function($routeProvider) {
+        $routeProvider.
+            when('/', {
+                templateUrl: 'partials/todo_page.html',
+                controller: 'MainCtrl'
+            }).
+            when('/credits', {
+                templateUrl: 'partials/credits.html',
+                controller: 'MainCtrl'
+            }).
+            otherwise({
+                redirectTo: '/'
+            });
+    }]);
+
+
+angular.module('mega_todo_ctrls', []);
+angular.module('mega_todo_ctrls').controller('MainCtrl', function ($scope ) {
 
     $scope.todoList = [
         { text:'Dynamic Todo 1', done: true},

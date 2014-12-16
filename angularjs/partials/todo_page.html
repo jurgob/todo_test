@@ -1,0 +1,16 @@
+<div class="addArea" >
+    <form>
+        <input name="addItemText" class="addItemText" ng-model="newItemText" type="text"  >
+        <button  class="addItemBtn" ng-click="addItem()" >Add</button>
+</form>
+<div>
+<div class="itemsCompletedCounter" >items completed: {{getCompletedItems().length}}</div>
+<ul class="todoList" >
+<li  class="item" ng-repeat="item in todoList">
+    <input class="itemCheck" type="checkbox" class="toggle"  ng-model="item.done" ng-click="modifyItem($index, {'done': item.done })" >
+        <span class="itemLabel" >
+            {{item.text}}
+        </span>
+        <button  class="itemDelete" ng-click="deleteItem($index)" >X</button>
+    </li>
+</ul>
