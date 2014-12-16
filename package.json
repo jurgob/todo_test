@@ -1,0 +1,35 @@
+{
+  "name": "todo_test",
+  "version": "1.0.0",
+  "description": "todo test with various framework",
+  "main": "gulpfile.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jurgob/todo_test.git"
+  },
+  "keywords": [
+    "javascript",
+    "angularjs",
+    "emberjs",
+    "flux",
+    "react",
+    "reactjs",
+    "todo"
+  ],
+  "author": "Jurgo Boemo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jurgob/todo_test/issues"
+  },
+  "homepage": "https://github.com/jurgob/todo_test",
+  "devDependencies": {
+    "gulp": "^3.8.10",
+    "gulp-connect": "^2.2.0"
+  }
+}
