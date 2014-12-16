@@ -4,6 +4,7 @@ window.mega_todo = Ember.Application.create();
 //ROUTING
 mega_todo.Router.map(function() {
   this.resource('todos', { path: '/' });
+    this.resource('credits', { path: '/credits' });
 });
 
 mega_todo.TodosRoute = Ember.Route.extend({

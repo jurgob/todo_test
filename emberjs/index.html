@@ -5,7 +5,6 @@
   </head>
   <body>
     <script type="text/x-handlebars" data-template-name="todos">
-
       {{input
         type="text"
         name="addItemText"
@@ -36,14 +35,38 @@
 
     </script>
 
-
+    <script type="text/x-handlebars" data-template-name="credits">
+        <div class="creditsArea" >
+            <h2>Credits</h2>
+            <ul>
+                <li>one</li>
+                <li>no one</li>
+                <li>hundred thousand</li>
+            </ul>
+        </div>
+    </script>
 
 
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-v1.3.0.js"></script>
     <script src="http://builds.emberjs.com/tags/v1.8.1/ember.js"></script>
     <script src="http://builds.emberjs.com/tags/v1.0.0-beta.11/ember-data.js"></script>
-    <script src="http://builds.emberjs.com/tags/v1.0.0-beta.11/local_storage_adapter.js"></script>
     <script src="main.js"></script>
+
+
+    <script type="text/x-handlebars">
+        <h1 >My Todo list - Emberjs:</h1>
+
+        <div>
+            {{outlet}}
+        </div>
+         <footer>
+            <a href="#/">todolist</a>
+            <a href="#/credits">credits</a>
+        </footer>
+    </script>
+
+
+
   </body>
 </html>
