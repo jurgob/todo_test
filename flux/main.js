@@ -57,7 +57,7 @@ var TodoList = React.createClass({
     }
 });
 
-var TodoApp = React.createClass({
+var TodoPage = React.createClass({
     getInitialState: function() {
         return {items: [{ 'text' : 'dog', 'done': true}, { 'text' : 'cat', 'done': false}], text: ''};
     },
@@ -76,7 +76,6 @@ var TodoApp = React.createClass({
     render: function() {
         return (
             <div>
-                <h3>TODO</h3>
                 <form onSubmit={this.handleSubmit}>
                     <input name="addItemText" className="addItemText" onChange={this.onChange} value={this.state.text} />
                     <button name="addItemBtn" className="addItemBtn"  >{'Add'}</button>
@@ -86,9 +85,53 @@ var TodoApp = React.createClass({
             </div>
         );
     }
+})
+
+var TodoApp = React.createClass({
+    render: function () {
+        return (
+            <div>
+                <RouteHandler/>
+            </div>
+        );
+    }
 });
 
-React.render(<TodoApp />, $('#TodoApp')[0]);
+
+var Credits = React.createClass({
+    render: function(){
+        return (
+            <div class="creditsArea" >
+                <h2>Credits</h2>
+                <ul>
+                    <li>one</li>
+                    <li>no one</li>
+                    <li>hundred thousand</li>
+                </ul>
+            </div>
+        );
+    }
+});
+
+
+var Router = window.ReactRouter
+var Route = Router.Route;
+var DefaultRoute = Router.DefaultRoute;
+var RouteHandler= Router.RouteHandler;
+var Link = Router.DefaultRoute;
+
+var routes = (
+    <Route name='TodoApp'  handler={TodoApp} path="/">
+        <Route name="credits"   handler={Credits} />
+        <DefaultRoute handler={TodoPage} />
+    </Route>
+);
+
+Router.run(routes, function (Handler) {
+    React.render(<Handler/>, $('#TodoApp')[0]);
+});
+
+//React.render(<TodoApp />, $('#TodoApp')[0]);
 
 
 
