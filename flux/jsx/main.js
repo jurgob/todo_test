@@ -57,7 +57,7 @@ var TodoList = React.createClass({displayName: 'TodoList',
     }
 });
 
-var TodoApp = React.createClass({displayName: 'TodoApp',
+var TodoPage = React.createClass({displayName: 'TodoPage',
     getInitialState: function() {
         return {items: [{ 'text' : 'dog', 'done': true}, { 'text' : 'cat', 'done': false}], text: ''};
     },
@@ -76,7 +76,6 @@ var TodoApp = React.createClass({displayName: 'TodoApp',
     render: function() {
         return (
             React.createElement("div", null, 
-                React.createElement("h3", null, "TODO"), 
                 React.createElement("form", {onSubmit: this.handleSubmit}, 
                     React.createElement("input", {name: "addItemText", className: "addItemText", onChange: this.onChange, value: this.state.text}), 
                     React.createElement("button", {name: "addItemBtn", className: "addItemBtn"}, 'Add')
@@ -86,9 +85,53 @@ var TodoApp = React.createClass({displayName: 'TodoApp',
             )
         );
     }
+})
+
+var TodoApp = React.createClass({displayName: 'TodoApp',
+    render: function () {
+        return (
+            React.createElement("div", null, 
+                React.createElement(RouteHandler, null)
+            )
+        );
+    }
 });
 
-React.render(React.createElement(TodoApp, null), $('#TodoApp')[0]);
+
+var Credits = React.createClass({displayName: 'Credits',
+    render: function(){
+        return (
+            React.createElement("div", {class: "creditsArea"}, 
+                React.createElement("h2", null, "Credits"), 
+                React.createElement("ul", null, 
+                    React.createElement("li", null, "one"), 
+                    React.createElement("li", null, "no one"), 
+                    React.createElement("li", null, "hundred thousand")
+                )
+            )
+        );
+    }
+});
+
+
+var Router = window.ReactRouter
+var Route = Router.Route;
+var DefaultRoute = Router.DefaultRoute;
+var RouteHandler= Router.RouteHandler;
+var Link = Router.DefaultRoute;
+
+var routes = (
+    React.createElement(Route, {name: "TodoApp", handler: TodoApp, path: "/"}, 
+        React.createElement(Route, {name: "credits", handler: Credits}), 
+        React.createElement(DefaultRoute, {handler: TodoPage})
+    )
+);
+
+Router.run(routes, function (Handler) {
+    React.render(React.createElement(Handler, null), $('#TodoApp')[0]);
+});
+
+//React.render(<TodoApp />, $('#TodoApp')[0]);
 
 
 
