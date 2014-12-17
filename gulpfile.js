@@ -3,7 +3,8 @@
  */
 var gulp = require('gulp'),
     connect = require('gulp-connect'),
-    react = require('gulp-react');
+    react = require('gulp-react'),
+    bower = require('gulp-bower');
 
 
 gulp.task('connect', function() {
@@ -31,6 +32,12 @@ gulp.task('compile_jsx', function () {
         .pipe(gulp.dest('./flux/jsx/'));
 });
 
+gulp.task('bower', function() {
+    return bower({cwd: './flux'});
+});
+
+
+
 gulp.task('watch', function () {
     //gulp.watch(['./*.html', './templates/*.html'], ['html']);
     gulp.watch( ['./**/*.html'], ['html']);
@@ -40,4 +47,6 @@ gulp.task('watch', function () {
 
 });
 
+
 gulp.task('default', ['connect', 'watch']);
+gulp.task('install', ['bower'])
