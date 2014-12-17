@@ -33,8 +33,11 @@ gulp.task('compile_jsx', function () {
 
 gulp.task('watch', function () {
     //gulp.watch(['./*.html', './templates/*.html'], ['html']);
-    gulp.watch( ['./**/*.html'], ['html'])
+    gulp.watch( ['./**/*.html'], ['html']);
+    gulp.watch( ['./flux/**/*.js' ], ['compile_jsx']);
     gulp.watch( ['./angularjs/**/*.js','./emberjs/**/*.js', './flux/**/*.js' ], ['js_refresh']);
+
+
 });
 
 gulp.task('default', ['connect', 'watch']);
