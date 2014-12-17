@@ -1,0 +1,22 @@
+{
+  "name": "todo_test_flux",
+  "version": "0.0.0",
+  "homepage": "https://github.com/jurgob/todo_test",
+  "authors": [
+    "jurgob <jurgo.boemo@gmail.com>"
+  ],
+  "main": "index.html",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react-router": "~0.11.5",
+    "flux": "~2.0.2"
+  }
+}
