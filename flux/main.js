@@ -50,7 +50,6 @@ var TodoList = React.createClass({
         return (
             <div>
                 <div class="itemsCompletedCounter" >items completed: {this.props.items.filter(function(el){ return el.done }).length}</div>
-                <div class="itemsCompletedCounter" >items: {this.props.items.length}</div>
                 <ul>{this.props.items.map(createItem)}</ul>
             </div>
         );
