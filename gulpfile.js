@@ -32,8 +32,11 @@ gulp.task('compile_jsx', function () {
         .pipe(gulp.dest('./flux/jsx/'));
 });
 
-gulp.task('bower', function() {
+gulp.task('bower_flux', function() {
     return bower({cwd: './flux'});
+});
+gulp.task('bower_angular', function() {
+    return bower({cwd: './angularjs'});
 });
 
 
@@ -49,4 +52,4 @@ gulp.task('watch', function () {
 
 
 gulp.task('default', ['connect', 'watch']);
-gulp.task('install', ['bower'])
+gulp.task('install', ['bower_flux','bower_angular' ])
