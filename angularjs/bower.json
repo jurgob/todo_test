@@ -1,0 +1,20 @@
+{
+  "name": "angularjs",
+  "version": "0.0.0",
+  "homepage": "https://github.com/jurgob/todo_test",
+  "authors": [
+    "jurgob <jurgo.boemo@gmail.com>"
+  ],
+  "main": "index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angularAMD": "~0.2.1"
+  }
+}
