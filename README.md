@@ -15,6 +15,19 @@ gulp install
 gulp
 ```
 
+check on browser (be sure gulp command is running):
+- angularjs: http://localhost:8000/angularjs
+- reactjs+flux: http://localhost:8000/flux
+- emberjs: http://localhost:8000/emberjs
+
+running casperjs tests (be sure gulp command is running):
+- angularjs: ./runtests.sh angularjs
+- reactjs+flux: ./runtests.sh flux
+- emberjs: ./runtests.sh emberjs
+
+
+
+
 ##history of app:##
 list of branch:
 ```
