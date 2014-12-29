@@ -3,14 +3,16 @@ todo_test
 
 test different frameworks
 
-clone repo
-
-to install the dependencies run:
+to install:
+```
+git clone https://github.com/jurgob/todo_test.git
+cd todo_test
 npm install
-grunt install
-
-to start the app run:
-grunt
-
+gulp install
+```
+run app:
+```
+gulp
+```
 
 
