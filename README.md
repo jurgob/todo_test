@@ -22,8 +22,8 @@ check on browser (be sure gulp command is running):
 
 running casperjs tests (be sure gulp command is running):
 - angularjs: ```./runtests.sh angularjs```
-- reactjs+flux: ./runtests.sh flux
-- emberjs: ./runtests.sh emberjs
+- reactjs+flux: ```./runtests.sh flux```
+- emberjs: ```./runtests.sh emberjs```
 
 
 
