@@ -38,11 +38,14 @@ app steps explaination:
 - plain_todo: the triviest todo list app:
 ```
 git checkout -f plain_todo
+npm install
 ```
 
 - routing: add routing system (check on footer the credit page)
 ```
 git checkout -f routing
+npm install
+gulp install
 ```
 
 
