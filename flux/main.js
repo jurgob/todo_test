@@ -1,138 +1,30 @@
-var DeleteItemBtn = React.createClass({
-    deleteItem: function (e) {
-        // Passing order of task
-        this.props.clicked(this.props.order);
+require.config({
+    baseUrl: "./",
+    paths: {
+        'jquery': 'http://code.jquery.com/jquery-1.11.1.min',
+        'html_shiv': 'http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min',
+        'html_shiv_printshiv':'http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv-printshiv.min',
+        'es5_sham': 'http://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.0.5/es5-shim.min',
+        'react': 'http://cdnjs.cloudflare.com/ajax/libs/react/0.12.1/react-with-addons.min',
+        'jsx_transformer': 'http://cdnjs.cloudflare.com/ajax/libs/react/0.12.1/JSXTransformer',
+        'flux': 'bower_components/flux/dist/Flux',
+        'react_router': 'bower_components/react-router/dist/react-router.min',
+        'react_router_shim':'react_router_shim'
     },
-    render: function () {
-        return (<button className="itemDelete" data-order={this.props.order}  onClick={this.deleteItem} >X</button> );
-    }
+    shim: {
+        'react':{
+            deps: ['jquery','html_shiv','html_shiv_printshiv', 'es5_sham'  ],
+            exports: 'React'
+        },
+        'flux': ['react'],
+        'react_router_shim': {
+            exports: 'React'
+        },
+        'react_router': {
+            deps: ['react_router_shim'],
+            exports: 'ReactRouter'
+        }
+    },
+    deps: ['jsx/mega_todo']
 });
-
-var CheckItem = React.createClass({
-    getInitialState: function() {
-        return {item: this.props.item, itemIdx: this.props.order };
-    },
-    modifyItem: function (e) {
-        // Passing order of task
-        this.props.clicked(this.props.order, !this.props.item.done);
-    },
-    render: function () {
-        return (<input className="itemCheck" type="checkbox" checked={this.props.item.done}  onChange={this.modifyItem}  />);
-    }
-});
-
-var TodoList = React.createClass({
-    handleDeleteItem: function(idx){
-        //console.log('handleDeleteItem: '+idx);
-
-        this.props.items.splice(idx, 1)
-        this.setState(this.state);
-        return;
-    },
-    handleModifyItem: function(idx, isDone){
-        //console.log('handleDeleteItem: '+idx);
-        this.props.items[idx]['done'] = isDone
-        this.setState(this.state);
-        return;
-    },
-    render: function() {
-        var handleDeleteItem = this.handleDeleteItem;
-        var handleModifyItem = this.handleModifyItem;
-        var createItem = function(item, idx) {
-            return (
-                <li>
-                    <CheckItem clicked={handleModifyItem} order={idx} item={item}  />
-                    <span className="itemLabel" >{item.text}</span>
-                    <DeleteItemBtn clicked={handleDeleteItem}  order={idx} item={item}  />
-                </li>
-            );
-        };
-        return (
-            <div>
-                <div class="itemsCompletedCounter" >items completed: {this.props.items.filter(function(el){ return el.done }).length}</div>
-                <ul>{this.props.items.map(createItem)}</ul>
-            </div>
-        );
-    }
-});
-
-var TodoPage = React.createClass({
-    getInitialState: function() {
-        return {items: [{ 'text' : 'dog', 'done': true}, { 'text' : 'cat', 'done': false}], text: ''};
-    },
-    onChange: function(e) {
-        this.setState({text: e.target.value});
-    },
-    handleSubmit: function(e) {
-        e.preventDefault();
-        //var nextItems = this.state.items.concat([this.state.text]);
-        if(!this.state.text)
-            return;
-        var nextItems = this.state.items.concat([{'text': this.state.text, 'done' : false}]);
-        var nextText = '';
-        this.setState({items: nextItems, text: nextText});
-    },
-    render: function() {
-        return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    <input name="addItemText" className="addItemText" onChange={this.onChange} value={this.state.text} />
-                    <button name="addItemBtn" className="addItemBtn"  >{'Add'}</button>
-                </form>
-
-                <TodoList items={this.state.items}   />
-            </div>
-        );
-    }
-})
-
-var TodoApp = React.createClass({
-    render: function () {
-        return (
-            <div>
-                <RouteHandler/>
-            </div>
-        );
-    }
-});
-
-
-var Credits = React.createClass({
-    render: function(){
-        return (
-            <div class="creditsArea" >
-                <h2>Credits</h2>
-                <ul>
-                    <li>one</li>
-                    <li>no one</li>
-                    <li>hundred thousand</li>
-                </ul>
-            </div>
-        );
-    }
-});
-
-
-var Router = window.ReactRouter
-var Route = Router.Route;
-var DefaultRoute = Router.DefaultRoute;
-var RouteHandler= Router.RouteHandler;
-var Link = Router.DefaultRoute;
-
-var routes = (
-    <Route name='TodoApp'  handler={TodoApp} path="/">
-        <Route name="credits"   handler={Credits} />
-        <DefaultRoute handler={TodoPage} />
-    </Route>
-);
-
-Router.run(routes, function (Handler) {
-    React.render(<Handler/>, $('#TodoApp')[0]);
-});
-
-//React.render(<TodoApp />, $('#TodoApp')[0]);
-
-
-
-
 

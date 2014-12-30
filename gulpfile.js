@@ -1,6 +1,3 @@
-/**
- * Created by jurgo.boemo on 16/12/2014.
- */
 var gulp = require('gulp'),
     connect = require('gulp-connect'),
     react = require('gulp-react'),
@@ -25,9 +22,8 @@ gulp.task('js_refresh', function () {
         .pipe(connect.reload());
 });
 
-
 gulp.task('compile_jsx', function () {
-    return gulp.src('flux/main.js')
+    return gulp.src('flux/mega_todo.js')
         .pipe(react())
         .pipe(gulp.dest('./flux/jsx/'));
 });
