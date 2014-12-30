@@ -26,11 +26,9 @@ casper.test.begin('Page Load', 3, function suite(test) {
     var PERF = new _PERF();
     casper.echo("PERF start" + PERF.measure());
     casper.start(PAGE_URL, function() {
-        casper.echo("testing framework: "+framework_name)
+        casper.echo("INFO testing framework: "+framework_name)
         casper.echo("PERF page loaded:" + PERF.measure());
         test.assertTitle(PAGE_TITLE, "page title is correct");
-
-
 
     });
 
