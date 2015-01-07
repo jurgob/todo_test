@@ -1,0 +1,19 @@
+{
+  "name": "bililiteRange",
+  "version": "2.5.1",
+  "main": "bililiteRange.js",
+  "ignore": [
+    "test/**/*"
+  ],
+  "homepage": "https://github.com/dwachss/bililiteRange",
+  "_release": "2.5.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v2.5.1",
+    "commit": "37f7f9616233178107732081987c99123fadb79c"
+  },
+  "_source": "git://github.com/dwachss/bililiteRange.git",
+  "_target": "~2.5.1",
+  "_originalSource": "bililiteRange",
+  "_direct": true
+}
