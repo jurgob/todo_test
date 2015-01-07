@@ -3,7 +3,6 @@ var gulp = require('gulp'),
     react = require('gulp-react'),
     bower = require('gulp-bower');
 
-
 gulp.task('connect', function() {
     connect.server({
         root: './',
@@ -23,7 +22,7 @@ gulp.task('js_refresh', function () {
 });
 
 gulp.task('compile_jsx', function () {
-    return gulp.src('flux/mega_todo.js')
+    return gulp.src('flux/js/main.js')
         .pipe(react())
         .pipe(gulp.dest('./flux/jsx/'));
 });
@@ -35,15 +34,11 @@ gulp.task('bower_angular', function() {
     return bower({cwd: './angularjs'});
 });
 
-
-
 gulp.task('watch', function () {
-    //gulp.watch(['./*.html', './templates/*.html'], ['html']);
     gulp.watch( ['./**/*.html'], ['html']);
-    gulp.watch( ['./flux/**/*.js' ], ['compile_jsx']);
-    gulp.watch( ['./angularjs/**/*.js','./emberjs/**/*.js', './flux/**/*.js' ], ['js_refresh']);
-
-
+    //gulp.watch( ['./flux/**/*.js' ], ['compile_jsx']);
+    //gulp.watch( ['./angularjs/**/*.js','./emberjs/**/*.js', './flux/**/*.js' ], ['js_refresh']);
+    gulp.watch( ['./angularjs/**/*.js','./emberjs/**/*.js' ], ['js_refresh']);
 });
 
 

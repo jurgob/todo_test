@@ -1,0 +1,12 @@
+[37;46;1mTest file: tests/maintest.js                                                    [0m
+[33m# Page Load[0m
+PERF start0
+INFO testing framework: emberjs
+PERF page loaded:107
+[32;1mPASS[0m page title is correct
+[32;1mPASS[0m item add success
+PERF item add success:3944
+[32;1mPASS[0m a lot of items add success
+PERF a lot of items add success:3698
+[37;42;1mPASS 3 tests executed in 7.771s, 3 passed, 0 failed, 0 dubious, 0 skipped.      [0m
+
