@@ -1,3 +1,5 @@
+npm install
+
 cd angularjs
 [ -f bower.json ] && bower install
 cd ..
