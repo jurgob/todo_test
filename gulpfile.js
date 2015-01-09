@@ -33,7 +33,7 @@ gulp.task('compile_jsx', function () {
 });
 
 gulp.task('bower', function() {
-    return bower({cwd: './flux'});
+    return gulp.src('./flux').pipe(bower())
 });
 
 
