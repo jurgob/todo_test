@@ -47,7 +47,7 @@ git checkout routing_branch
 
 - requirejs: add requirejs (casperjs test will not work from there)
 ```
-git checkout requirej_branch
+git checkout requirejs_branch
 ./install.sh
 ```
  
