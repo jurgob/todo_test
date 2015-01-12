@@ -27,7 +27,6 @@ var CheckItem = React.createClass({
 var TodoList = React.createClass({
     handleDeleteItem: function(idx){
         //console.log('handleDeleteItem: '+idx);
-
         this.props.items.splice(idx, 1)
         this.setState(this.state);
         return;

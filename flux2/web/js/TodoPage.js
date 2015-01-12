@@ -40,7 +40,6 @@ var TodoList = React.createClass({
         var handleModifyItem = this.handleModifyItem;
         var _items = this.props.items;
         var createItem = function(item, idx) {
-            console.log('item.id: '+item.id)
             return (
                 <li key={item.id}  >
                     <CheckItem clicked={handleModifyItem} item={item}   />
