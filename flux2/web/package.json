@@ -1,0 +1,45 @@
+{
+  "name": "todo_list_flux",
+  "version": "1.0.0",
+  "description": "flux todo list",
+  "main": "js/main.js",
+  "scripts": {
+    "start": "watchify -o js/bundle.js -v -d .",
+    "build": "NODE_ENV=production browserify . | uglifyjs -cm > js/bundle.min.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jurgob/todo_test"
+  },
+  "keywords": [
+    "flux",
+    "react",
+    "todo"
+  ],
+  "browserify": {
+    "transform": [
+      "reactify",
+      "envify"
+    ]
+  },
+  "author": "Jurgo Boemo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jurgob/todo_test/issues"
+  },
+  "homepage": "https://github.com/jurgob/todo_test",
+  "dependencies": {
+    "events": "^1.0.2",
+    "flux": "^2.0.1",
+    "object-assign": "^2.0.0",
+    "react": "^0.12.2",
+    "react-router": "^0.11.6"
+  },
+  "devDependencies": {
+    "browserify": "^8.0.3",
+    "envify": "^3.2.0",
+    "reactify": "^0.17.1",
+    "uglify-js": "^2.4.16"
+  }
+}
