@@ -5,10 +5,8 @@ test different frameworks
 
 ##to install:##
 ```
-git clone https://github.com/jurgob/todo_test.git
-cd todo_test
-npm install
-gulp install
+git clone https://github.com/jurgob/todo_test.git && cd todo_test
+./install.sh
 ```
 ##run app:##
 ```
@@ -31,24 +29,27 @@ running casperjs tests (be sure gulp command is running):
 ##history of app:##
 list of branch:
 ```
-git tag
+git branch -a
 ```
 app steps explaination:
 
 - plain_todo: the triviest todo list app:
 ```
-git checkout -f plain_todo
-npm install
+git checkout plain_todo_branch
+./install.sh
 ```
 
 - routing: add routing system (check on footer the credit page)
 ```
-git checkout -f routing
-npm install
-gulp install
+git checkout routing_branch
+./install.sh
 ```
 
-
+- requirejs: add requirejs (casperjs test will not work from there)
+```
+git checkout requirejs_branch
+./install.sh
+```
  
 
 
